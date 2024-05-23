@@ -20,12 +20,12 @@ export default async function Home() {
         </div>
       </header>
       <div className="space-y-4">
-        <div>
-          <h2 className="font-bold mb-1 text-gray-500">Startup</h2>
+        <div className="space-y-1">
+          <h2 className="font-bold text-gray-500">Startup</h2>
           <p><Link href="https://instantdb.com" target="_blank" >Instant</Link>: Build real-time and offline apps</p>
         </div>
-        <div>
-          <h2 className="font-bold mb-1 text-gray-500">Projects</h2>
+        <div className="space-y-1">
+          <h2 className="font-bold text-gray-500">Projects</h2>
           <p><Link href="https://consistent.fit" target="_blank">Consistent</Link>: Make fitness part of your identity</p>
           <p><Link href="https://zeneca.io/stopa" target="_blank">Zeneca</Link>: Share your favorite books</p>
           <p><Link href="https://jobsearch.dev" target="_blank">Jobsearch.dev</Link>: Senior and staff interview prep</p>
