@@ -1,6 +1,7 @@
 import { toHTML } from "@/lib/markdown";
 import { redirect } from "next/navigation";
 import db from "@/lib/instantAdmin";
+import Link from "next/link";
 
 export const dynamic = 'force-static';
 export const dynamicParams = true;
@@ -31,12 +32,26 @@ export default async function Post({ params }: { params: { slug: string } }) {
   }
   const html = toHTML(post.body[0].markdown);
   return (
-    <main>
+    <div>
+      <header className="mb-2">
+        <div className="flex space-x-2 font-medium">
+          <Link href="/" className="text-black visited:text-black">
+            Stepan <span className="hidden md:inline">Parunashvili</span>
+          </Link>
+          <Link href="https://twitter.com/stopachka" target="_blank">
+            Twitter
+          </Link>
+          <Link href="https://instantdb.com" target="_blank">
+            Instant
+          </Link>
+        </div>
+      </header>
       <div className="prose prose-h1:mt-8 prose-h1:mb-4 prose-h2:mt-4 prose-h2:mb-2 mx-auto">
         <h1>{post.title}</h1>
         <div className="text-gray-500 text-sm">{msToFriendlyStr(post.createdAt)}</div>
         <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="text-gray-500 italic text-center">Powered by <a href="https://instantdb.com">Instant</a></div>
       </div>
-    </main>
+    </div>
   );
 }
