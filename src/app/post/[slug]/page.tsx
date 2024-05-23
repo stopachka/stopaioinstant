@@ -18,6 +18,20 @@ function msToFriendlyStr(ms: number) {
   return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  console.log(`Generating: metadata/${params.slug}: ${new Date().toISOString()}`);
+  const { posts: [post] } = await db.query({
+    posts: {
+      $: {
+        where: { number: +params.slug }
+      }
+    }
+  });
+  return {
+    title: post.title || `Stepan Parunashvili`,
+  };
+}
+
 export default async function Post({ params }: { params: { slug: string } }) {
   console.log(`Rendering: post/${params.slug}: ${new Date().toISOString()}`);
   const result = await db.query({
