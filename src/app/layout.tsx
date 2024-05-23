@@ -32,9 +32,9 @@ export default function RootLayout({
             <Link href="https://twitter.com/stopachka" target="_blank">
               Twitter
             </Link>
-            <Link href="#">Instant</Link>
-            <Link href="#">Books</Link>
-            <Link href="#">Instant</Link>
+            <Link href="https://instantdb.com" target="_blank">Instant</Link>
+            <Link href="https://zeneca.io/stopa" target="_blank">Books</Link>
+            <Link href="https://consistent.fit" target="_blank">Consistent</Link>
           </header>
           {children}
         </div>
