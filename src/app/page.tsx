@@ -8,16 +8,43 @@ export default async function Home() {
   const { posts } = await db.query({ posts: {} });
   const orderedPosts = posts.toSorted((a, b) => b.number - a.number);
   return (
-    <main className="space-y-4">
-      {orderedPosts.map((post) => {
-        return (
-          <div>
-            <Link href={`/post/${post.number}`} className="underline">
-              {post.title}
-            </Link>
+    <div>
+      <header className="mb-2">
+        <div className="flex space-x-2 font-medium">
+          <Link href="/" className="text-black visited:text-black">
+            Stepan <span className="hidden md:inline">Parunashvili</span>
+          </Link>
+          <Link href="https://twitter.com/stopachka" target="_blank">
+            Twitter
+          </Link>
+        </div>
+      </header>
+      <div className="space-y-4">
+        <div>
+          <h2 className="font-bold mb-1 text-gray-500">Startup</h2>
+          <p><Link href="https://instantdb.com" target="_blank" >Instant</Link>: Build real-time and offline apps</p>
+        </div>
+        <div>
+          <h2 className="font-bold mb-1 text-gray-500">Projects</h2>
+          <p><Link href="https://consistent.fit" target="_blank">Consistent</Link>: Make fitness part of your identity</p>
+          <p><Link href="https://zeneca.io/stopa" target="_blank">Zeneca</Link>: Share your favorite books</p>
+          <p><Link href="https://jobsearch.dev" target="_blank">Jobsearch.dev</Link>: Senior and staff interview prep</p>
+        </div>
+        <div>
+          <h2 className="font-bold mb-1 text-gray-500">Essays</h2>
+          <div className="space-y-4">
+            {orderedPosts.map((post) => {
+              return (
+                <div>
+                  <Link href={`/post/${post.number}`} className="underline">
+                    {post.title}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
-    </main>
+        </div>
+      </div>
+    </div>
   );
 }

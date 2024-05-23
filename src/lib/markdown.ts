@@ -14,10 +14,10 @@ const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
 const referencePrefix = "f";
 const footnotePrefix = "n";
 const footnoteTemplate = (ref: string, text: string) => {
-  return `<div><a id="${footnotePrefix}-${ref}" href="#${referencePrefix}-${ref}">[${ref}]</a> ${text}</div>`;
+  return `<div class="text-sm"><a id="${footnotePrefix}-${ref}" href="#${referencePrefix}-${ref}">[${ref}]</a> ${text}</div>`;
 };
 const referenceTemplate = (ref: string) => {
-  return `<sup id="${referencePrefix}-${ref}"><a href="#${footnotePrefix}-${ref}">[${ref}]</a></sup>`;
+  return `<sup id="${referencePrefix}-${ref}" class=""><a href="#${footnotePrefix}-${ref}">[${ref}]</a></sup>`;
 };
 const interpolateReferences = (text: string) => {
   return text.replace(referenceMatch, (_, ref) => {
