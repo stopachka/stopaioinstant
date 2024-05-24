@@ -1,19 +1,9 @@
 import { init } from "@instantdb/admin";
+import { Schema } from "@/lib/types";
 
-export type Schema = {
-  body: { markdown: string };
-  posts: {
-    title: string;
-    createdAt: number;
-    updatedAt: number;
-    number: number;
-  }
-}
-
-const APP_ID = "af126e82-c4a8-4bdf-9e1e-8883a6d5ce31";
-const db = init<Schema>({
-  appId: APP_ID,
+const adminDB = init<Schema>({
+  appId: process.env.NEXT_PUBLIC_INSTANT_APP_ID!,
   adminToken: process.env.INSTANT_ADMIN_TOKEN!,
 });
 
-export default db;
+export default adminDB;

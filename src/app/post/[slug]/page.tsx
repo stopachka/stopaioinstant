@@ -1,13 +1,14 @@
 import { toHTML } from "@/lib/markdown";
 import { redirect } from "next/navigation";
-import db from "@/lib/instantAdmin";
+import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
+import ActiveCounter from "@/components/ActiveCounter";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const { posts } = await db.query({ posts: {} });
+  const { posts } = await adminDB.query({ posts: {} });
   return posts.map((post) => ({
     slug: post.number.toString(),
   }));
@@ -23,16 +24,11 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  console.log(
-    `Generating: metadata/${params.slug}: ${new Date().toISOString()}`
-  );
   const {
     posts: [post],
-  } = await db.query({
+  } = await adminDB.query({
     posts: {
-      $: {
-        where: { number: +params.slug },
-      },
+      $: { where: { number: +params.slug }, },
     },
   });
   return {
@@ -41,8 +37,7 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  console.log(`Rendering: post/${params.slug}: ${new Date().toISOString()}`);
-  const result = await db.query({
+  const result = await adminDB.query({
     posts: {
       $: { where: { number: +params.slug } },
       body: {},
@@ -70,6 +65,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       </header>
       <div className="prose prose-h1:mt-8 prose-h1:mb-4 prose-h2:mt-4 prose-h2:mb-2 mx-auto">
         <h1>{post.title}</h1>
+        <ActiveCounter id={post.id} />
         <div className="text-gray-500 text-sm">
           {msToFriendlyStr(post.createdAt)}
         </div>

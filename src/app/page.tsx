@@ -1,11 +1,11 @@
-import db from "@/lib/instantAdmin";
+import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
 
 export const dynamic = "force-static";
 
 export default async function Home() {
   console.log(`Rendering: /: ${new Date().toISOString()}`);
-  const { posts } = await db.query({ posts: {} });
+  const { posts } = await adminDB.query({ posts: {} });
   const orderedPosts = posts.toSorted((a, b) => b.number - a.number);
   return (
     <div>
