@@ -19,11 +19,10 @@ export default async function Home() {
       </header>
       <div className="space-y-4">
         <div className="space-y-1">
-          <h2 className="font-bold">My life's work</h2>
+          <h2 className="text-gray-500">My life's work</h2>
           <p>
             <span>
               <Link
-                className="font-bold"
                 href="https://instantdb.com"
                 target="_blank"
               >
@@ -54,18 +53,20 @@ export default async function Home() {
             : Senior and staff interview prep
           </p>
         </div>
-        <div className="inline-flex space-x-2">
-          <h2 className="text-gray-500">Socials: </h2>
-          <Link href="https://twitter.com/stopachka" target="_blank">
-            twitter
-          </Link>
-          <span className="text-gray-500">/</span>
-          <Link href="https://twitter.com/stopachka" target="_blank">
-            favorite books
-          </Link>
+        <div className="space-y-1">
+          <h2 className="text-gray-500">Socials</h2>
+          <p>
+            <Link href="https://twitter.com/stopachka" target="_blank">
+              Twitter
+            </Link>
+          </p>
+          <p>
+            <Link href="https://twitter.com/stopachka" target="_blank">
+              Favorite books
+            </Link></p>
         </div>
         <div className="space-y-1">
-          <h2 className="font-bold">Essays</h2>
+          <h2 className="text-gray-500">Essays</h2>
           <div className="space-y-4">
             {orderedPosts.map((post) => {
               return (
