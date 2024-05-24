@@ -5,6 +5,7 @@ export type Schema = {
   posts: {
     title: string;
     createdAt: number;
+    updatedAt: number;
     number: number;
   }
 }
