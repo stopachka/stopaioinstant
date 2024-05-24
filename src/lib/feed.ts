@@ -18,7 +18,6 @@ export async function generateFeed(): Promise<Feed> {
     updated: new Date(latestUpdatedMs),
     copyright: `© ${new Date().getFullYear()} Stepan Parunashvili`,
     feedLinks: {
-      json: `${url}/feed.json`,
       atom: `${url}/feed.atom`,
       rss2: `${url}/feed.rss`,
     },
