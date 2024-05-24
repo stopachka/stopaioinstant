@@ -50,7 +50,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const html = toHTML(post.body[0].markdown);
   return (
     <div>
-      <header className="mb-2">
+      <header className="mb-2 flex justify-between items-center">
         <div className="flex space-x-2 font-medium">
           <Link href="/" className="text-black visited:text-black">
             Stepan <span className="hidden md:inline">Parunashvili</span>
@@ -62,10 +62,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
             Twitter
           </Link>
         </div>
+        <div><ActiveCounter /></div>
       </header>
       <div className="prose prose-h1:mt-8 prose-h1:mb-4 prose-h2:mt-4 prose-h2:mb-2 mx-auto">
         <h1>{post.title}</h1>
-        <ActiveCounter id={post.id} />
         <div className="text-gray-500 text-sm">
           {msToFriendlyStr(post.createdAt)}
         </div>

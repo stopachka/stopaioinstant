@@ -7,6 +7,6 @@ export default function ActiveCounter() {
   const { peers } = room.usePresence();
   const numActive = Object.values(peers).length + 1;
   return (
-    <div>Active readers: {numActive} </div>
+    <div className='text-gray-500 text-sm italic'>Active readers: {numActive} </div>
   )
 }

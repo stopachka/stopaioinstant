@@ -1,3 +1,4 @@
+import ActiveCounter from "@/components/ActiveCounter";
 import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
 
@@ -9,12 +10,13 @@ export default async function Home() {
   const orderedPosts = posts.toSorted((a, b) => b.number - a.number);
   return (
     <div>
-      <header className="mb-2">
+      <header className="mb-2 flex justify-between items-center">
         <div className="flex space-x-2 font-medium">
           <Link href="/" className="text-black visited:text-black">
             Stepan Parunashvili
           </Link>
         </div>
+        <div><ActiveCounter /></div>
       </header>
       <div className="space-y-4">
         <div className="space-y-1">
