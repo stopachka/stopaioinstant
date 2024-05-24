@@ -54,11 +54,11 @@ export default async function Home() {
           </p>
         </div>
         <div className="inline-flex space-x-2">
-          <h2 className="text-gray-500 italic">Socials: </h2>
+          <h2 className="text-gray-500">Socials: </h2>
           <Link href="https://twitter.com/stopachka" target="_blank">
             twitter
           </Link>
-          <span>/</span>
+          <span className="text-gray-500">/</span>
           <Link href="https://twitter.com/stopachka" target="_blank">
             favorite books
           </Link>
