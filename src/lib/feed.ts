@@ -1,8 +1,8 @@
 import { Feed } from "feed";
-import db from "./instantAdmin";
+import adminDB from "./instantAdmin";
 
 export async function generateFeed(): Promise<Feed> {
-  const { posts } = await db.query({ posts: {} });
+  const { posts } = await adminDB.query({ posts: {} });
   const [latestUpdatedMs] = posts
     .map((post) => post.updatedAt)
     .toSorted()

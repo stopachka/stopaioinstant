@@ -1,4 +1,4 @@
-import db from "@/lib/instantAdmin";
+import adminDB from "@/lib/instantAdmin";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
@@ -10,7 +10,7 @@ export async function POST() {
   revalidatePath("/");
   revalidatePath("/feed.rss");
   revalidatePath("/feed.atom");
-  const { posts } = await db.query({ posts: {} });
+  const { posts } = await adminDB.query({ posts: {} });
   posts.forEach((post) => {
     revalidatePath(`/post/${post.number}`);
   });
