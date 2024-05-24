@@ -19,7 +19,7 @@ export default async function Home() {
       </header>
       <div className="space-y-4">
         <div className="space-y-1">
-          <h2 className="text-gray-500">My life's work</h2>
+          <h2 className="text-gray-500">My startup</h2>
           <p>
             <span>
               <Link
