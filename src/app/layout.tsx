@@ -12,6 +12,13 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   title: "Stepan Parunashvili",
   description: "Read Essays by Stepan Parunashvili",
+  alternates: {
+    canonical: "https://stopa.io",
+    types: {
+      "application/rss+xml": 'https://stopa.io/feed.rss',
+      "application/atom+xml": 'https://stopa.io/feed.atom',
+    }
+  }
 };
 
 export default function RootLayout({

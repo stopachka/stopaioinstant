@@ -8,6 +8,8 @@ export async function POST() {
     return Response.json({ message: "Hey, watcha doing?" }, { status: 400 });
   }
   revalidatePath("/");
+  revalidatePath("/feed.rss");
+  revalidatePath("/feed.atom");
   const { posts } = await db.query({ posts: {} });
   posts.forEach((post) => {
     revalidatePath(`/post/${post.number}`);
