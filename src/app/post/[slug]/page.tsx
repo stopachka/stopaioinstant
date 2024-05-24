@@ -51,7 +51,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   return (
     <div>
       <header className="mb-2 flex justify-between items-center">
-        <div className="flex space-x-2 font-medium">
+        <div className="flex space-x-2 font-bold">
           <Link href="/" className="text-black visited:text-black">
             Stepan <span className="hidden md:inline">Parunashvili</span>
           </Link>
