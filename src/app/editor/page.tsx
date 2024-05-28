@@ -35,17 +35,17 @@ function PostEditor({ id }: { id: string }) {
     <form
       key={post.id}
       className="space-y-2"
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+      onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as any;
         const title = target.title.value;
         const markdown = target.markdown.value;
-        clientDB.transact([
+        await clientDB.transact([
           tx.posts[post.id].update({ title }),
           tx.postBodies[postBody.id].update({ markdown })
         ])
-        bustNext(user!.refresh_token);
-        alert("🫡");
+        const res = await bustNext(user!.refresh_token);
+        alert(`🫡 ${res.status}`);
       }}
     >
       <input

@@ -4,7 +4,10 @@ import { headers } from "next/headers";
 
 export async function POST() {
   const token = headers().get('token');
-  const user = await adminDB.auth.verifyToken(token!);
+  if (!token) {
+    return Response.json({ message: "Hey, where's the token?" }, { status: 400 });
+  }
+  const user = await adminDB.auth.verifyToken(token);
   if (user.email !== "stepan.p@gmail.com") {
     return Response.json({ message: "Hey, watcha doing?" }, { status: 400 });
   }
