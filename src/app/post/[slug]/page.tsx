@@ -2,7 +2,7 @@ import { toHTML } from "@/lib/markdown";
 import { redirect } from "next/navigation";
 import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
-import ActiveCounter from "@/components/ActiveCounter";
+import ActiveCounter from "@/app/ActiveCounter";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;

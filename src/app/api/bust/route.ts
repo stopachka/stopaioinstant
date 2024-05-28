@@ -3,8 +3,9 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 export async function POST() {
-  const secret = headers().get('Secret');
-  if (secret !== process.env.SECRET) {
+  const token = headers().get('token');
+  const user = await adminDB.auth.verifyToken(token!);
+  if (user.email !== "stepan.p@gmail.com") {
     return Response.json({ message: "Hey, watcha doing?" }, { status: 400 });
   }
   revalidatePath("/");
