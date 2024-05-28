@@ -61,9 +61,10 @@ export default async function Home() {
             </Link>
           </p>
           <p>
-            <Link href="https://twitter.com/stopachka" target="_blank">
+            <Link href="https://zeneca.io/stopa" target="_blank">
               Favorite books
-            </Link></p>
+            </Link>
+          </p>
         </div>
         <div className="space-y-1">
           <h2 className="text-gray-500">Essays</h2>
