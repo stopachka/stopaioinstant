@@ -1,4 +1,4 @@
-import ActiveCounter from "@/components/ActiveCounter";
+import ActiveCounter from "@/app/ActiveCounter";
 import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
 
