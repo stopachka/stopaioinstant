@@ -3,7 +3,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-clojure";
 import "prismjs/components/prism-sql";
 import "prismjs/components/prism-markdown";
-import "prismjs/themes/prism-solarizedlight.css";
+import "prism-themes/themes/prism-one-dark.css";
 
 // --------- 
 // Footnotes 
@@ -45,8 +45,10 @@ function codeWithHighlighting(code: string, lang: string = 'plaintext') {
   const language = Prism.languages[lang] ? lang : 'plaintext';
   return (
     '<div class="not-prose">' +
-    '<pre class="text-sm bg-[#FCF5E4] rounded-md p-2 overflow-x-auto font-normal">' +
+    `<pre class="text-sm rounded-md p-2 overflow-x-auto font-normal language-${language}">` +
+    '<span class="font-mono">' +
     Prism.highlight(code, Prism.languages[language], language) +
+    "</span>" +
     "</pre>" +
     "</div>"
   );
