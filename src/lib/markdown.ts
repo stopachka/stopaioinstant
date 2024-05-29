@@ -9,7 +9,7 @@ import "prismjs/themes/prism-solarizedlight.css";
 // Footnotes 
 // Inspo: https://github.com/markedjs/marked/issues/1562#issuecomment-1213367729
 
-const footnoteMatch = /^\[\^([^\]]+)\]:([\s\S]*)$/;
+const footnoteMatch = /^\[\^([^\]]+)\]:\s*([\s\S]*?)(?=\n\[\^|\n\n|$)/gm;
 const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
 const referencePrefix = "f";
 const footnotePrefix = "n";
