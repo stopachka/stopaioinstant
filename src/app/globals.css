@@ -4,7 +4,6 @@
 
 html {
   font-size: 18px;
-  @apply antialiased;
   --link-color: rgb(0, 0, 238); 
   --link-color-active: rgb(85, 26, 139);
 }
