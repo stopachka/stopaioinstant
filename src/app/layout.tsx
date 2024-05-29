@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { Spectral } from "next/font/google";
+import { Spectral, Fira_Code } from "next/font/google";
 import "./globals.css";
 
 const spectral = Spectral({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
+  variable: "--font-spectral",
   subsets: ["latin-ext"],
   display: "block"
+});
+
+const firaCode = Fira_Code({
+  weight: ['400', '500'],
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-fira-code',
 });
 
 export const metadata: Metadata = {
@@ -27,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spectral.className}>
+    <html className={`${spectral.variable} ${firaCode.variable}`} lang="en">
+      <body className="font-serif">
         <div className="p-4">
           {children}
         </div>
