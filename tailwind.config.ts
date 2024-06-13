@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      serif: ['var(--font-spectral)', ...defaultTheme.fontFamily.serif],
-      mono: ['var(--font-fira-code)', ...defaultTheme.fontFamily.mono],
+      serif: ['var(--font-serif)', ...defaultTheme.fontFamily.serif],
+      mono: ['Berk Mono', ...defaultTheme.fontFamily.mono],
     },
   },
   plugins: [
