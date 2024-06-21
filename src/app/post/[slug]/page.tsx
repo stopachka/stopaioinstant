@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 import adminDB from "@/lib/instantAdmin";
 import Link from "next/link";
 import ActiveCounter from "@/app/ActiveCounter";
+import { db } from "@/drizzleDB";
+import { postsTable } from "@/schema";
+import { eq } from "drizzle-orm";
 
 export const dynamic = "force-static";
 export const dynamicParams = true;
@@ -14,7 +17,7 @@ export async function generateStaticParams() {
   }));
 }
 
-function msToFriendlyStr(ms: number) {
+function msToFriendlyStr(ms: number | Date) {
   const d = new Date(ms);
   return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
@@ -37,17 +40,14 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const result = await adminDB.query({
-    posts: {
-      $: { where: { number: +params.slug } },
-      body: {},
-    },
+  const post = await db.query.postsTable.findFirst({
+    where: eq(postsTable.id, params.slug),
+    with: { body: true },
   });
-  const [post] = result.posts;
   if (!post) {
     redirect("/404");
   }
-  const html = toHTML(post.body[0].markdown);
+  const html = toHTML(post.body);
   return (
     <div>
       <header className="mb-2 flex justify-between items-center">
